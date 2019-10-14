@@ -2,7 +2,7 @@ require "http/request"
 require "http/headers"
 
 class Handler
-  def run(request : HTTP::Request) : NamedTuple(body: String | Nil, headers: HTTP::Headers | Nil, status_code: Int32 | Nil)
+  def run(request : HTTP::Request)
     return {
       body:        "Hello, Crystal. You said: #{request.body.try(&.gets_to_end)}",
       status_code: 200,
