@@ -16,7 +16,7 @@ require "http/request"
 require "http/headers"
 
 class Handler
-  def run(request : HTTP::Request) : NamedTuple(body: String, headers: HTTP::Headers | Nil, status_code: Int32 | Nil)
+  def run(request : HTTP::Request) : NamedTuple(body: String | Nil, headers: HTTP::Headers | Nil, status_code: Int32 | Nil)
     return {
       body: "<p>Hello, Crystal. You said: #{request.body.try(&.gets_to_end)}</p>",
       status_code: 200,

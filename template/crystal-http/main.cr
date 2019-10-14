@@ -15,7 +15,9 @@ server = HTTP::Server.new do |context|
     end
   end
 
-  context.response.print(response_triple[:body])
+  if response_triple[:body]?
+    context.response.print(response_triple[:body])
+  end
 end
 
 address = server.bind_tcp "0.0.0.0", 5000
