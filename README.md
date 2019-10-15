@@ -4,23 +4,23 @@
 
 ```
 faas template pull https://github.com/koffeinfrei/crystal-http-template
-faas new --lang ruby-http homepage
+faas new --lang crystal-http FUNCTION_NAME
 ```
 
 ### Example
 
-Edit the `homepage/handler.rb` file to return some HTML:
+Edit the `FUNCTION_NAME/handler.rb` file to return some HTML:
 
 ```crystal
 require "http/request"
 require "http/headers"
 
 class Handler
-  def run(request : HTTP::Request) : NamedTuple(body: String | Nil, headers: HTTP::Headers | Nil, status_code: Int32 | Nil)
+  def run(request : HTTP::Request)
     return {
-      body:        "Hello, Crystal. You said: #{request.body.try(&.gets_to_end)}",
+      body:        "<p>Hello, Crystal. You said: #{request.body.try(&.gets_to_end)}</p>",
       status_code: 200,
-      headers:     HTTP::Headers{"Content-Type" => "text/plain"},
+      headers:     HTTP::Headers{"Content-Type" => "text/html"},
     }
   end
 end
@@ -32,6 +32,22 @@ Add a shard to the `homepage/shard.yml` if you need additional dependencies.
 
 ```sh
 faas-cli up -f homepage.yml
+```
+
+## Specification
+
+The handler needs to return a `NamedTuple` with the keys `body`, `headers`,
+`status_code`. At least one of the keys must be present. The following is the
+type annotation for the return value:
+
+```crystal
+NamedTuple(body: String, headers: HTTP::Headers, status_code: Int32) |
+NamedTuple(body: String, headers: HTTP::Headers) |
+NamedTuple(body: String, status_code: Int32) |
+NamedTuple(body: String) |
+NamedTuple(headers: HTTP::Headers, status_code: Int32) |
+NamedTuple(headers: HTTP::Headers) |
+NamedTuple(status_code: Int32)
 ```
 
 ## Credits
