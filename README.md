@@ -17,7 +17,7 @@ require "http/headers"
 
 class Handler
   def run(request : HTTP::Request)
-    return {
+    {
       body:        "<p>Hello, Crystal. You said: #{request.body.try(&.gets_to_end)}</p>",
       status_code: 200,
       headers:     HTTP::Headers{"Content-Type" => "text/html"},
