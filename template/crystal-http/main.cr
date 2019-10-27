@@ -37,5 +37,5 @@ server = HTTP::Server.new do |context|
   end
 end
 
-address = server.bind_tcp "0.0.0.0", 5000
+server.bind_tcp "0.0.0.0", 5000
 server.listen
