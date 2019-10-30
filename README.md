@@ -3,7 +3,7 @@
 ## Usage
 
 ```
-faas template pull https://github.com/koffeinfrei/crystal-http-template
+faas template store pull crystal-http
 faas new --lang crystal-http FUNCTION_NAME
 ```
 
