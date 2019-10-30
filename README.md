@@ -3,8 +3,8 @@
 ## Usage
 
 ```
-faas template store pull crystal-http
-faas new --lang crystal-http FUNCTION_NAME
+faas-cli template store pull crystal-http
+faas-cli new --lang crystal-http FUNCTION_NAME
 ```
 
 ### Example
