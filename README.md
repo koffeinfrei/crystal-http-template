@@ -4,12 +4,12 @@
 
 ```
 faas-cli template store pull crystal-http
-faas-cli new --lang crystal-http FUNCTION_NAME
+faas-cli new --lang crystal-http function_name
 ```
 
 ### Example
 
-Edit the `FUNCTION_NAME/handler.rb` file to return some HTML:
+Edit the `function_name/handler.rb` file to return some HTML:
 
 ```crystal
 require "http/request"
@@ -26,12 +26,12 @@ class Handler
 end
 ```
 
-Add a shard to the `homepage/shard.yml` if you need additional dependencies.
+Add a shard to the `function_name/shard.yml` if you need additional dependencies.
 
 #### Deploy
 
 ```sh
-faas-cli up -f homepage.yml
+faas-cli up -f function_name.yml
 ```
 
 ## Specification
