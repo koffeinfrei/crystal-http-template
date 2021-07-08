@@ -1,6 +1,6 @@
 FROM openfaas/of-watchdog:0.7.2 as watchdog
 
-FROM crystallang/crystal:0.35.1
+FROM crystallang/crystal:1.0.0
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
