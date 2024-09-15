@@ -3,7 +3,7 @@
 ## Usage
 
 ```
-faas-cli template store pull crystal-http
+faas-cli template pull https://github.com/koffeinfrei/crystal-http-template
 faas-cli new --lang crystal-http function_name
 ```
 
